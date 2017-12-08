@@ -38,8 +38,6 @@ public class EditorActivity extends AppCompatActivity implements AdapterView.OnI
 
     }
 
-
-
     @Override
     public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
 
