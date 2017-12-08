@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">NoteBook</string>
+    <string name="app_name">随手记账</string>
 
     <string name="type_expenses">支出</string>
     <string name="type_income">收入</string>
