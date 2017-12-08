@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
         // 在账单表上执行一个查询
         Cursor cursor = db.query(BillEntry.TABLE_NAME, projection, null, null, null, null, null);
 
-        TextView displayView = findViewById(R.id.text_view_pet);
+        TextView displayView = findViewById(R.id.text_view_bill);
 
         try {
             displayView.setText("当前有" + cursor.getCount() + "条账单.\n\n");

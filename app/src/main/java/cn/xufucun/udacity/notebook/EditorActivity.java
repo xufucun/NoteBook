@@ -20,7 +20,7 @@ import cn.xufucun.udacity.notebook.data.BillDbHelper;
 
 public class EditorActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
-    private EditText mTotal;
+    private EditText mPrice;
     private EditText mRemarks;
 
     private int mType = BillEntry.TYPE_EXPENSES;
@@ -30,10 +30,10 @@ public class EditorActivity extends AppCompatActivity implements AdapterView.OnI
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
 
-        mTotal = findViewById(R.id.edit_pet_name);
-        mRemarks = findViewById(R.id.edit_pet_breed);
+        mPrice = findViewById(R.id.edit_bill_price);
+        mRemarks = findViewById(R.id.edit_bill_remark);
 
-        Spinner mTypeSpinner = findViewById(R.id.spinner_gender);
+        Spinner mTypeSpinner = findViewById(R.id.spinner_type);
         mTypeSpinner.setOnItemSelectedListener(this);
 
     }
@@ -59,15 +59,15 @@ public class EditorActivity extends AppCompatActivity implements AdapterView.OnI
 
     private void insertPet() {
 
-        String totalString = mTotal.getText().toString().trim();
+        String priceString = mPrice.getText().toString().trim();
         String remarkString = mRemarks.getText().toString().trim();
 
-        if (totalString.trim().isEmpty()||remarkString.trim().isEmpty()){
+        if (priceString.trim().isEmpty()||remarkString.trim().isEmpty()){
             Toast.makeText(this, "不能为空", Toast.LENGTH_SHORT).show();
             return;
         }
 
-        int totalInt = Integer.parseInt(totalString)*100; //存储单位（分）
+        int totalInt = Integer.parseInt(priceString)*100; //存储单位（分）
         int timeStamp = Integer.parseInt(getTime());
 
         BillDbHelper mDbHelper = new BillDbHelper(this);

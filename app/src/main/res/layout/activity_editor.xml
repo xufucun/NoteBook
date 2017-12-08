@@ -8,7 +8,7 @@
     tools:context="cn.xufucun.udacity.notebook.EditorActivity">
 
     <LinearLayout
-        android:id="@+id/container_gender"
+        android:id="@+id/container_type"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
@@ -24,7 +24,7 @@
             android:orientation="vertical">
 
             <Spinner
-                android:id="@+id/spinner_gender"
+                android:id="@+id/spinner_type"
                 android:layout_width="wrap_content"
                 android:layout_height="48dp"
                 android:paddingRight="16dp"
@@ -50,13 +50,13 @@
             android:paddingLeft="4dp">
 
             <EditText
-                android:id="@+id/edit_pet_name"
+                android:id="@+id/edit_bill_price"
                 style="@style/EditorFieldStyle"
                 android:hint="金额(元)"
                 android:inputType="numberDecimal" />
 
             <EditText
-                android:id="@+id/edit_pet_breed"
+                android:id="@+id/edit_bill_remark"
                 style="@style/EditorFieldStyle"
                 android:hint="备注信息"
                 android:inputType="textCapWords" />
