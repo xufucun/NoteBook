@@ -8,84 +8,59 @@
     tools:context="cn.xufucun.udacity.notebook.EditorActivity">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <TextView
-            android:text="金额"
-            style="@style/CategoryStyle" />
-
-        <LinearLayout
-            android:layout_height="wrap_content"
-            android:layout_width="0dp"
-            android:layout_weight="2"
-            android:paddingLeft="4dp"
-            android:orientation="vertical">
-
-            <EditText
-                android:id="@+id/edit_pet_name"
-                android:hint="金额"
-                android:inputType="textCapWords"
-                style="@style/EditorFieldStyle" />
-
-            <EditText
-                android:id="@+id/edit_pet_breed"
-                android:hint="备注"
-                android:inputType="textCapWords"
-                style="@style/EditorFieldStyle" />
-        </LinearLayout>
-    </LinearLayout>
-
-    <LinearLayout
         android:id="@+id/container_gender"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
-            android:text="类型"
-            style="@style/CategoryStyle" />
+            style="@style/CategoryStyle"
+            android:text="类型" />
 
         <LinearLayout
-            android:layout_height="wrap_content"
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="2"
             android:orientation="vertical">
 
             <Spinner
                 android:id="@+id/spinner_gender"
-                android:layout_height="48dp"
                 android:layout_width="wrap_content"
+                android:layout_height="48dp"
                 android:paddingRight="16dp"
+                android:entries="@array/array_type_options"
                 android:spinnerMode="dropdown"/>
         </LinearLayout>
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/container_measurement"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <TextView
-            android:text="时间"
-            style="@style/CategoryStyle" />
+            style="@style/CategoryStyle"
+            android:text="金额" />
 
-        <RelativeLayout
-            android:layout_height="wrap_content"
+        <LinearLayout
             android:layout_width="0dp"
+            android:layout_height="wrap_content"
             android:layout_weight="2"
+            android:orientation="vertical"
             android:paddingLeft="4dp">
 
             <EditText
-                android:id="@+id/edit_pet_weight"
-                android:hint="默认现在"
-                android:focusable="false"
-                android:inputType="number"
-                style="@style/EditorFieldStyle" />
+                android:id="@+id/edit_pet_name"
+                style="@style/EditorFieldStyle"
+                android:hint="金额(元)"
+                android:inputType="numberDecimal" />
 
-        </RelativeLayout>
+            <EditText
+                android:id="@+id/edit_pet_breed"
+                style="@style/EditorFieldStyle"
+                android:hint="备注信息"
+                android:inputType="textCapWords" />
+        </LinearLayout>
     </LinearLayout>
 
 </LinearLayout>

@@ -12,44 +12,16 @@ public final class BillContract {
 
     public static final class BillEntry implements BaseColumns{
 
-        public final static String TABLE_NAME = "bills";  //表名称
+        public final static String TABLE_NAME = "bills";        //表名称
 
-        /**
-         * 账单的唯一ID号（仅用于数据库表中）。
-         * 类型：INTEGER
-         */
-        public final static String _ID = BaseColumns._ID;
+        public final static String _ID = BaseColumns._ID;       //唯一ID号 INTEGER
+        public final static String COLUMN_BILL_TYPE = "type";   //类型 INTEGER
+        public final static String COLUMN_BILL_PRICE ="price";  //金额 INTEGER
+        public final static String COLUMN_BILL_REMARK = "remark";    //备注 TEXT
+        public final static String COLUMN_BILL_DATE = "time";   //时间 INTEGER
 
-        /**
-         * 类型
-         * 数据类型：INTEGER
-         */
-        public final static String COLUMN_BILL_TYPE = "type";
-
-        /**
-         * 金额
-         * 数据类型：INTEGER
-         */
-        public final static String COLUMN_BILL_PRICE ="price";       //金额
-
-
-        /**
-         * 金额
-         * 数据类型：TEXT
-         */
-        public final static String COLUMN_BILL_REMARK = "remark";    //备注
-
-        /**
-         * 时间
-         * 数据类型：INTEGER
-         */
-        public final static String COLUMN_BILL_DATE = "weight";  //时间
-
-        /**
-         * 类型的可能值。
-         */
-        public static final int TYPE_EXPENSES = 0;
-        public static final int TYPE_INCOME = 1;
+        public static final int TYPE_EXPENSES = 0; //类型 支出
+        public static final int TYPE_INCOME = 1;   //类型 收入
 
     }
 

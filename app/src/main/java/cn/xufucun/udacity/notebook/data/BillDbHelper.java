@@ -12,8 +12,6 @@ import cn.xufucun.udacity.notebook.data.BillContract.BillEntry;
 
 public class BillDbHelper extends SQLiteOpenHelper {
 
-    private static final String TAG = "BillDbHelper";
-
     private static final String DATABASE_NAME = "shelter.db";
 
     private static final int DATABASE_VERSION = 1;
@@ -29,7 +27,7 @@ public class BillDbHelper extends SQLiteOpenHelper {
                 + BillEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + BillEntry.COLUMN_BILL_TYPE + " INTEGER NOT NULL DEFAULT 0, "
                 + BillEntry.COLUMN_BILL_PRICE + " INTEGER NOT NULL, "
-                + BillEntry.COLUMN_BILL_REMARK + " TEXT, "
+                + BillEntry.COLUMN_BILL_REMARK + " TEXT NOT NULL, "
                 + BillEntry.COLUMN_BILL_DATE + " INTEGER NOT NULL);";
 
         // 执行SQL语句
@@ -38,6 +36,6 @@ public class BillDbHelper extends SQLiteOpenHelper {
 
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-        // 数据库仍然在版本1，所以这里没有任何事情要做。
+
     }
 }

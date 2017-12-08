@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string-array name="array_gender_options">
+    <string-array name="array_type_options">
         <item>@string/type_expenses</item>
         <item>@string/type_income</item>
     </string-array>

@@ -18,12 +18,10 @@ import android.widget.Toast;
 import cn.xufucun.udacity.notebook.data.BillContract.BillEntry;
 import cn.xufucun.udacity.notebook.data.BillDbHelper;
 
-public class EditorActivity extends AppCompatActivity {
+public class EditorActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private EditText mTotal;
     private EditText mRemarks;
-    private EditText mDate;
-    private Spinner mTypeSpinner;
 
     private int mType = BillEntry.TYPE_EXPENSES;
 
@@ -32,47 +30,46 @@ public class EditorActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_editor);
 
-        // Find all relevant views that we will need to read user input from
         mTotal = findViewById(R.id.edit_pet_name);
         mRemarks = findViewById(R.id.edit_pet_breed);
-        mDate = findViewById(R.id.edit_pet_weight);
-        mTypeSpinner = findViewById(R.id.spinner_gender);
 
-        setupSpinner();
+        Spinner mTypeSpinner = findViewById(R.id.spinner_gender);
+        mTypeSpinner.setOnItemSelectedListener(this);
 
     }
 
-    private void setupSpinner() {
-        ArrayAdapter genderSpinnerAdapter = ArrayAdapter.createFromResource(this, R.array.array_gender_options, android.R.layout.simple_spinner_item);
-        genderSpinnerAdapter.setDropDownViewResource(android.R.layout.simple_dropdown_item_1line);
-        mTypeSpinner.setAdapter(genderSpinnerAdapter);
-        mTypeSpinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
-            @Override
-            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
-                String selection = (String) parent.getItemAtPosition(position);
-                if (!TextUtils.isEmpty(selection)) {
-                    if (selection.equals(getString(R.string.type_income))) {
-                        mType = BillEntry.TYPE_INCOME;
-                    } else {
-                        mType = BillEntry.TYPE_EXPENSES;
-                    }
-                }
-            }
 
-            // 因为AdapterView是一个抽象类，所以必须定义onNothingSelected
-            @Override
-            public void onNothingSelected(AdapterView<?> parent) {
+
+    @Override
+    public void onItemSelected(AdapterView<?> adapterView, View view, int position, long l) {
+
+        String selection = (String) adapterView.getItemAtPosition(position);
+        if (!TextUtils.isEmpty(selection)) {
+            if (selection.equals(getString(R.string.type_income))) {
+                mType = BillEntry.TYPE_INCOME;
+            } else {
                 mType = BillEntry.TYPE_EXPENSES;
             }
-        });
-
+        }
     }
 
+    @Override
+    public void onNothingSelected(AdapterView<?> adapterView) {
+        mType = BillEntry.TYPE_EXPENSES;
+    }
+
+
     private void insertPet() {
+
         String totalString = mTotal.getText().toString().trim();
         String remarkString = mRemarks.getText().toString().trim();
 
-        int totalInt = Integer.parseInt(totalString);
+        if (totalString.trim().isEmpty()||remarkString.trim().isEmpty()){
+            Toast.makeText(this, "不能为空", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        int totalInt = Integer.parseInt(totalString)*100; //存储单位（分）
         int timeStamp = Integer.parseInt(getTime());
 
         BillDbHelper mDbHelper = new BillDbHelper(this);
@@ -100,8 +97,7 @@ public class EditorActivity extends AppCompatActivity {
 
     public String getTime(){
         long time = System.currentTimeMillis()/1000;
-        String  str=String.valueOf(time);
-        return str;
+        return String.valueOf(time);
     }
 
     @Override
