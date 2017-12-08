@@ -3,5 +3,6 @@
 
     <string name="type_expenses">支出</string>
     <string name="type_income">收入</string>
+    <string name="edit_save">保存</string>
 
 </resources>

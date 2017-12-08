@@ -1,14 +1,11 @@
 package cn.xufucun.udacity.notebook;
 
-import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.design.widget.FloatingActionButton;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
 
@@ -88,44 +85,6 @@ public class MainActivity extends AppCompatActivity {
         } finally {
             cursor.close();
         }
-    }
-
-
-    /**
-     * 添加虚拟数据
-     */
-    private void insertPet() {
-        // 以写入模式获取数据库
-        SQLiteDatabase db = mDbHelper.getWritableDatabase();
-
-        ContentValues values = new ContentValues();
-        values.put(BillEntry.COLUMN_BILL_TYPE, BillEntry.TYPE_EXPENSES);
-        values.put(BillEntry.COLUMN_BILL_PRICE, 10000);
-        values.put(BillEntry.COLUMN_BILL_REMARK,"备注");
-        values.put(BillEntry.COLUMN_BILL_DATE,  0);
-
-        long newRowId = db.insert(BillEntry.TABLE_NAME, null, values);
-    }
-
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.action_insert_dummy_data:
-                insertPet();
-                displayDatabaseInfo();
-                return true;
-            case R.id.action_delete_all_entries:
-                // Do nothing for now
-                return true;
-        }
-        return super.onOptionsItemSelected(item);
     }
 
 }
