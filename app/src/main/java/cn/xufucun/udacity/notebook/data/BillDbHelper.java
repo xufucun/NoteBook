@@ -23,7 +23,7 @@ public class BillDbHelper extends SQLiteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         // 创建一个包含SQL语句的字符串来创建账单
-        String SQL_CREATE_PETS_TABLE =  "CREATE TABLE " + BillEntry.TABLE_NAME + " ("
+        String SQL_CREATE_PETS_TABLE = "CREATE TABLE " + BillEntry.TABLE_NAME + " ("
                 + BillEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
                 + BillEntry.COLUMN_BILL_TYPE + " INTEGER NOT NULL DEFAULT 0, "
                 + BillEntry.COLUMN_BILL_PRICE + " INTEGER NOT NULL, "
@@ -38,4 +38,8 @@ public class BillDbHelper extends SQLiteOpenHelper {
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
     }
+
+
+
+
 }

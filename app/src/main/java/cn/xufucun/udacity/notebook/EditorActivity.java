@@ -62,11 +62,10 @@ public class EditorActivity extends AppCompatActivity implements AdapterView.OnI
         String remarkString = mRemarks.getText().toString().trim();
 
         if (priceString.trim().isEmpty()||remarkString.trim().isEmpty()){
-            Toast.makeText(this, "不能为空", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.no_input, Toast.LENGTH_SHORT).show();
             return;
         }
-
-        int totalInt = Integer.parseInt(priceString)*100; //存储单位（分）
+        float totalInt = Float.parseFloat(priceString)*100; //存储单位（分）
         int timeStamp = Integer.parseInt(getTime());
 
         BillDbHelper mDbHelper = new BillDbHelper(this);
@@ -112,7 +111,7 @@ public class EditorActivity extends AppCompatActivity implements AdapterView.OnI
                 return true;
 
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);
+                NavUtils.navigateUpFromSameTask(this);//(PS 这是课程DEMO中用到的，其实我开始也不知道)
                 return true;
         }
         return super.onOptionsItemSelected(item);

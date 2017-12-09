@@ -15,7 +15,7 @@
 
         <TextView
             style="@style/CategoryStyle"
-            android:text="类型" />
+            android:text="@string/bill_type" />
 
         <LinearLayout
             android:layout_width="0dp"
@@ -26,8 +26,8 @@
             <Spinner
                 android:id="@+id/spinner_type"
                 android:layout_width="wrap_content"
-                android:layout_height="48dp"
-                android:paddingRight="16dp"
+                android:layout_height="@dimen/spinnr_height"
+                android:paddingEnd="@dimen/spinner_pn"
                 android:entries="@array/array_type_options"
                 android:spinnerMode="dropdown"/>
         </LinearLayout>
@@ -40,25 +40,25 @@
 
         <TextView
             style="@style/CategoryStyle"
-            android:text="金额" />
+            android:text="@string/bill_price" />
 
         <LinearLayout
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="2"
             android:orientation="vertical"
-            android:paddingLeft="4dp">
+            android:paddingStart="@dimen/input_ps">
 
             <EditText
                 android:id="@+id/edit_bill_price"
                 style="@style/EditorFieldStyle"
-                android:hint="金额(元)"
+                android:hint="@string/bill_money"
                 android:inputType="numberDecimal" />
 
             <EditText
                 android:id="@+id/edit_bill_remark"
                 style="@style/EditorFieldStyle"
-                android:hint="备注信息"
+                android:hint="@string/bill_remark"
                 android:inputType="textCapWords" />
         </LinearLayout>
     </LinearLayout>
