@@ -70,17 +70,17 @@ public class MainActivity extends AppCompatActivity {
                     BillEntry.COLUMN_BILL_DATE + "\n");
 
             int idColumnIndex = cursor.getColumnIndex(BillEntry._ID);
-            int nameColumnIndex = cursor.getColumnIndex(BillEntry.COLUMN_BILL_TYPE);
-            int breedColumnIndex = cursor.getColumnIndex(BillEntry.COLUMN_BILL_PRICE);
-            int genderColumnIndex = cursor.getColumnIndex(BillEntry.COLUMN_BILL_REMARK);
-            int weightColumnIndex = cursor.getColumnIndex(BillEntry.COLUMN_BILL_DATE);
+            int typeColumnIndex = cursor.getColumnIndex(BillEntry.COLUMN_BILL_TYPE);
+            int priceColumnIndex = cursor.getColumnIndex(BillEntry.COLUMN_BILL_PRICE);
+            int remarkColumnIndex = cursor.getColumnIndex(BillEntry.COLUMN_BILL_REMARK);
+            int dateColumnIndex = cursor.getColumnIndex(BillEntry.COLUMN_BILL_DATE);
 
             while (cursor.moveToNext()) {
                 int currentID = cursor.getInt(idColumnIndex);
-                int currentType = cursor.getInt(nameColumnIndex);
-                int currentPrice = cursor.getInt(breedColumnIndex);
-                String  currentRemark = cursor.getString(genderColumnIndex);
-                int currentTime = cursor.getInt(weightColumnIndex);
+                int currentType = cursor.getInt(typeColumnIndex);
+                int currentPrice = cursor.getInt(priceColumnIndex);
+                String  currentRemark = cursor.getString(remarkColumnIndex);
+                int currentTime = cursor.getInt(dateColumnIndex);
                 displayView.append(("\n" + currentID + " - " +
                         currentType + " - " +
                         currentPrice + " - " +
@@ -104,34 +104,17 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_update_all_entries:
 
-                String tableName = BillEntry.TABLE_NAME;
                 ContentValues values = new ContentValues();
                 values.put(BillEntry.COLUMN_BILL_PRICE,2000);
 
-                // 根据标题更新哪一行
                 String selection = BillEntry.COLUMN_BILL_PRICE + " LIKE ?";
                 String[] selectionArgs = { "200" };
 
+                updateDatabase(BillEntry.TABLE_NAME,values,selection,selectionArgs);
 
-                update();
                 return true;
         }
         return super.onOptionsItemSelected(item);
-    }
-
-    private void update(){
-        BillDbHelper mDbHelper = new BillDbHelper(this);
-        SQLiteDatabase db = mDbHelper.getReadableDatabase();
-        // 一列的新值
-        ContentValues values = new ContentValues();
-        values.put(BillEntry.COLUMN_BILL_PRICE,2000);
-
-        // 根据标题更新哪一行
-        String selection = BillEntry.COLUMN_BILL_PRICE + " LIKE ?";
-        String[] selectionArgs = { "200" };
-
-       db.update(BillEntry.TABLE_NAME, values, null, null);
-
     }
 
     /**

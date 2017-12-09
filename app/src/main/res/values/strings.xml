@@ -11,7 +11,7 @@
     <string name="no_input">不能为空</string>
     <string name="update_all_data">更新所有数据</string>
     
-    <string name="current_data">当前有1%s条账单\n\n</string>
+    <string name="current_data">当前有%1s条账单\n\n</string>
     <string name="error_toast">Error with saving pet</string>
     <string name="success_toast">Pet saved with row id:</string>
 
