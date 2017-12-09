@@ -104,6 +104,14 @@ public class MainActivity extends AppCompatActivity {
         switch (item.getItemId()) {
             case R.id.action_update_all_entries:
 
+                String tableName = BillEntry.TABLE_NAME;
+                ContentValues values = new ContentValues();
+                values.put(BillEntry.COLUMN_BILL_PRICE,2000);
+
+                // 根据标题更新哪一行
+                String selection = BillEntry.COLUMN_BILL_PRICE + " LIKE ?";
+                String[] selectionArgs = { "200" };
+
 
                 update();
                 return true;
@@ -122,10 +130,7 @@ public class MainActivity extends AppCompatActivity {
         String selection = BillEntry.COLUMN_BILL_PRICE + " LIKE ?";
         String[] selectionArgs = { "200" };
 
-
        db.update(BillEntry.TABLE_NAME, values, null, null);
-
-
 
     }
 
@@ -136,7 +141,7 @@ public class MainActivity extends AppCompatActivity {
      * @param selection 更新条件
      * @param selectionArgs 更新条件中的参数
      */
-    private void onUpdate(String tableName,ContentValues values ,String selection,String[] selectionArgs){
+    private void updateDatabase(String tableName,ContentValues values ,String selection,String[] selectionArgs){
         BillDbHelper mDbHelper = new BillDbHelper(this);
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
         db.update(tableName,values,selection,selectionArgs);
