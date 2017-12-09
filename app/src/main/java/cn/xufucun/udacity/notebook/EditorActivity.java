@@ -56,7 +56,7 @@ public class EditorActivity extends AppCompatActivity implements AdapterView.OnI
     }
 
 
-    private void insertPet() {
+    private void insertBills() {
 
         String priceString = mPrice.getText().toString().trim();
         String remarkString = mRemarks.getText().toString().trim();
@@ -106,16 +106,15 @@ public class EditorActivity extends AppCompatActivity implements AdapterView.OnI
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_save:
-                insertPet();
+                insertBills();
                 finish();
                 return true;
 
             case android.R.id.home:
-                NavUtils.navigateUpFromSameTask(this);//(PS 这是课程DEMO中用到的，其实我开始也不知道)
+                NavUtils.navigateUpFromSameTask(this);
                 return true;
         }
         return super.onOptionsItemSelected(item);
     }
-
 
 }

@@ -1,5 +1,6 @@
 package cn.xufucun.udacity.notebook;
 
+import android.content.ContentValues;
 import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -99,11 +100,26 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
-            case R.id.action_delete_all_entries:
-//                deleteDatabase("shelter.db");
+            case R.id.action_update_all_entries:
+                update();
                 return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    private void update(){
+        BillDbHelper mDbHelper = new BillDbHelper(this);
+        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+        // 一列的新值
+        ContentValues values = new ContentValues();
+        values.put(BillEntry.COLUMN_BILL_PRICE,2000);
+
+        // 根据标题更新哪一行
+        String selection = BillEntry.COLUMN_BILL_PRICE + " LIKE ?";
+        String[] selectionArgs = { "200" };
+
+       db.update(BillEntry.TABLE_NAME, values, null, null);
+
     }
 
 

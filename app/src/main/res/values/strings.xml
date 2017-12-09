@@ -9,6 +9,6 @@
     <string name="bill_money">金额(元)</string>
     <string name="bill_remark">备注信息</string>
     <string name="no_input">不能为空</string>
-    <string name="delete_all_data">删除所有数据</string>
+    <string name="update_all_data">更新所有数据</string>
 
 </resources>
