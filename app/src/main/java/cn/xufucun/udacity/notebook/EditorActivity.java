@@ -83,10 +83,9 @@ public class EditorActivity extends AppCompatActivity implements AdapterView.OnI
         // 根据插入是否成功显示Toast消息
         if (newRowId == -1) {
             // 如果行ID是-1，则插入时出错。
-            Toast.makeText(this, "Error with saving pet", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, R.string.error_toast, Toast.LENGTH_SHORT).show();
         } else {
-            //否则，插入是成功的，我们可以显示一个带有行ID的Toast。
-            Toast.makeText(this, "Pet saved with row id: " + newRowId, Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, getString(R.string.success_toast) + newRowId, Toast.LENGTH_SHORT).show();
         }
 
     }

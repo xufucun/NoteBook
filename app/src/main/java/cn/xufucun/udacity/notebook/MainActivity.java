@@ -60,7 +60,9 @@ public class MainActivity extends AppCompatActivity {
         TextView displayView = findViewById(R.id.text_view_bill);
 
         try {
-            displayView.setText("当前有" + cursor.getCount() + "条账单.\n\n");
+            String string = getResources().getString(R.string.current_data);
+            String strings = String.format(string,String.valueOf(cursor.getCount()));
+            displayView.setText(strings);
             displayView.append(BillEntry._ID + " - " +
                     BillEntry.COLUMN_BILL_TYPE + " - " +
                     BillEntry.COLUMN_BILL_PRICE + " - " +
@@ -101,6 +103,8 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_update_all_entries:
+
+
                 update();
                 return true;
         }
@@ -118,8 +122,24 @@ public class MainActivity extends AppCompatActivity {
         String selection = BillEntry.COLUMN_BILL_PRICE + " LIKE ?";
         String[] selectionArgs = { "200" };
 
+
        db.update(BillEntry.TABLE_NAME, values, null, null);
 
+
+
+    }
+
+    /**
+     *  更新数据库
+     * @param tableName 表名
+     * @param values 更新的数据
+     * @param selection 更新条件
+     * @param selectionArgs 更新条件中的参数
+     */
+    private void onUpdate(String tableName,ContentValues values ,String selection,String[] selectionArgs){
+        BillDbHelper mDbHelper = new BillDbHelper(this);
+        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+        db.update(tableName,values,selection,selectionArgs);
     }
 
 
