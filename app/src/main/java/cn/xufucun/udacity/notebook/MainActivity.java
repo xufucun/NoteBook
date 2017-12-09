@@ -100,7 +100,7 @@ public class MainActivity extends AppCompatActivity {
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.action_delete_all_entries:
-                deleteDatabase("shelter.db");
+//                deleteDatabase("shelter.db");
                 return true;
         }
         return super.onOptionsItemSelected(item);
